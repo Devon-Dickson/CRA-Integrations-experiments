@@ -6,6 +6,13 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
+                <button
+                    onClick={() => {
+                        throw Error("Test Error");
+                    }}
+                >
+                    Throw Test Error
+                </button>
                 <img src={logo} className="App-logo" alt="logo" />
                 <a
                     className="App-link"
