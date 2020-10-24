@@ -2,22 +2,15 @@ language: node_js
 node_js:
     - "stable"
 cache:
+    yarn: true
     directories:
         - node_modules
-
 jobs:
     include:
-        - script: npm run test
-        - script: npm run build
-
-        - deploy:
-              provider: pages
-              skip_cleanup: true
-              github_token: $github_token
-              local_dir: build
-              on:
-                  branch: main
-
+        - name: Run Tests
+          script: yarn test
+        - name: Build Bundle
+          script: yarn build
         - name: Create release and notify Sentry of deploy
           if: ( type = push AND branch = main)
           env: SENTRY_ORG=my-app-1o SENTRY_PROJECT=my-app SENTRY_ENVIRONMENT=production
@@ -29,3 +22,11 @@ jobs:
               sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps build/static/js
               sentry-cli releases finalize $SENTRY_RELEASE
               sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_ENVIRONMENT
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $github_token
+    local_dir: build
+    on:
+        branch: main
