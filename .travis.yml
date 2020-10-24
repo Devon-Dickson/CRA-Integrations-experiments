@@ -6,18 +6,18 @@ cache:
         - node_modules
 
 jobs:
-    scripts:
-        - npm test
-        - npm run build
-
-    deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: $github_token
-        local_dir: build
-        on:
-            branch: main
     include:
+        - script: npm run test
+        - script: npm run build
+
+        - deploy:
+              provider: pages
+              skip_cleanup: true
+              github_token: $github_token
+              local_dir: build
+              on:
+                  branch: main
+
         - name: Create release and notify Sentry of deploy
           if: ( type = push AND branch = main)
           env: SENTRY_ORG=my-app-1o SENTRY_PROJECT=my-app SENTRY_ENVIRONMENT=production
