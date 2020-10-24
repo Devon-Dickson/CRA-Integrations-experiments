@@ -1,18 +1,30 @@
 import React from "react";
+import * as Sentry from "@sentry/react";
 import logo from "./logo.svg";
 import "App.css";
+import { Heading, Section } from "components/Heading";
 
 function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <button
-                    onClick={() => {
-                        throw Error("Test Error");
-                    }}
+                <Sentry.ErrorBoundary
+                    fallback={<div>An error has occured</div>}
                 >
-                    Throw Test Error
-                </button>
+                    <Section>
+                        <Section>
+                            <Section>
+                                <Section>
+                                    <Section>
+                                        <Section>
+                                            <Heading>Heading</Heading>
+                                        </Section>
+                                    </Section>
+                                </Section>
+                            </Section>
+                        </Section>
+                    </Section>
+                </Sentry.ErrorBoundary>
                 <img src={logo} className="App-logo" alt="logo" />
                 <a
                     className="App-link"

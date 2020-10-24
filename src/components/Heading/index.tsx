@@ -43,7 +43,6 @@ export const Heading = (
 export const clampHeadingLevel = (headingLevel: number): number => {
     if (headingLevel > 6) {
         throw Error("Heading too big!");
-        return 6;
     } else if (headingLevel < 1) {
         return 1;
     } else {
