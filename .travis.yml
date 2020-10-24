@@ -5,9 +5,6 @@ cache:
     yarn: true
     directories:
         - node_modules
-script:
-    - yarn test
-    - yarn build
 
 deploy:
     provider: pages
@@ -19,6 +16,10 @@ deploy:
 
 jobs:
     include:
+        - name: Test
+          script: yarn test
+        - name: Build
+          script: yarn build
         - name: Create release and notify Sentry of deploy
           if: ( type = push AND branch = main)
           env: SENTRY_ORG=my-app-1o SENTRY_PROJECT=my-app SENTRY_ENVIRONMENT=production
