@@ -5,7 +5,7 @@
     "homepage": "https://devon-dickson.github.io/my-app",
     "scripts": {
         "start": "react-scripts start",
-        "build": "REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-scripts build",
+        "build": "REACT_APP_GIT_SHA=`git rev-parse HEAD` react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",

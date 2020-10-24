@@ -14,7 +14,7 @@ Sentry.init({
     environment: process.env.NODE_ENV,
     release:
         process.env.NODE_ENV === "production"
-            ? "my-app@" + process.env.REACT_APP_GIT_SHA
+            ? process.env.REACT_APP_GIT_SHA
             : undefined,
 });
 
