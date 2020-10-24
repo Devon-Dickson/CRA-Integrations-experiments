@@ -6,6 +6,20 @@ cache:
     directories:
         - node_modules
 
+scripts:
+    - yarn test
+    - yarn build
+
+env: SENTRY_ORG=my-app-1o SENTRY_PROJECT=my-app SENTRY_ENVIRONMENT=production
+script: |
+    curl -sL https://sentry.io/get-cli/ | bash
+    export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+    sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+    sentry-cli releases set-commits $SENTRY_RELEASE --auto
+    sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps build/static/js
+    sentry-cli releases finalize $SENTRY_RELEASE
+    sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_ENVIRONMENT
+
 deploy:
     provider: pages
     skip_cleanup: true
@@ -16,18 +30,4 @@ deploy:
 
 jobs:
     include:
-        - name: Test
-          script: yarn test
-        - name: Build
-          script: yarn build
         - name: Create release and notify Sentry of deploy
-          if: ( type = push AND branch = main)
-          env: SENTRY_ORG=my-app-1o SENTRY_PROJECT=my-app SENTRY_ENVIRONMENT=production
-          script: |
-              curl -sL https://sentry.io/get-cli/ | bash
-              export SENTRY_RELEASE=$(sentry-cli releases propose-version)
-              sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
-              sentry-cli releases set-commits $SENTRY_RELEASE --auto
-              sentry-cli releases files $SENTRY_RELEASE upload-sourcemaps build/static/js
-              sentry-cli releases finalize $SENTRY_RELEASE
-              sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_ENVIRONMENT
