@@ -2,6 +2,7 @@
     "name": "my-app",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://devon-dickson.github.io/my-app",
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
