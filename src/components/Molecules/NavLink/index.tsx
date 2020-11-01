@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import * as S from "./style";
 
 type NavLinkProps = {
-    children: string;
+    children?: string;
     path: string;
 };
 

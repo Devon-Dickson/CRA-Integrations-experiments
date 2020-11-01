@@ -1,5 +1,5 @@
 import React from "react";
-import { PathProps } from "paths";
+import { RouteProps } from "RouteConfig";
 import { Button } from "stories/Button";
 import NavLink from "components/Molecules/NavLink";
 import * as S from "components/Molecules/Header/style";
@@ -9,14 +9,14 @@ export type HeaderProps = {
     onLogin: () => void;
     onLogout: () => void;
     onCreateAccount: () => void;
-    paths: Array<PathProps>;
+    routes: Array<RouteProps>;
 };
 
 const Header = ({
     onLogin,
     onLogout,
     onCreateAccount,
-    paths,
+    routes,
     user,
 }: HeaderProps) => (
     <S.Header>
@@ -46,7 +46,7 @@ const Header = ({
         </div>
         <S.Nav>
             <ul>
-                {paths.map(({ path, label }) => (
+                {routes.map(({ path, label }) => (
                     <NavLink key={`${label}-${path}`} path={path}>
                         {label}
                     </NavLink>

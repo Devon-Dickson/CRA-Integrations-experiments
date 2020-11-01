@@ -1,20 +1,21 @@
 import Dashboard from "containers/Dashboard";
 import ManagePeople from "containers/ManagePeople";
 import ManageResources from "containers/ManageResources";
+import NotFound from "containers/NotFound";
 import Settings from "containers/Settings";
 import { ComponentClass, FunctionComponent } from "react";
 import { DefaultParams, RouteComponentProps } from "wouter";
 
-export type PathProps = {
+export type RouteProps = {
     component:
         | ComponentClass<RouteComponentProps<DefaultParams>, any>
         | FunctionComponent<RouteComponentProps<DefaultParams>>
         | undefined;
-    label: string;
+    label?: string;
     path: string;
 };
 
-const paths: Array<PathProps> = [
+const RouteProps: Array<RouteProps> = [
     {
         component: Dashboard,
         label: "Dashboard",
@@ -35,6 +36,10 @@ const paths: Array<PathProps> = [
         label: "Settings",
         path: "/settings",
     },
+    {
+        component: NotFound,
+        path: "/:rest",
+    },
 ];
 
-export default paths;
+export default RouteProps;

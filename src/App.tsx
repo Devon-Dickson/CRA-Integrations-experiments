@@ -2,7 +2,7 @@ import React from "react";
 import "App.css";
 import Header from "components/Molecules/Header";
 import { Route, Switch } from "wouter";
-import paths from "paths";
+import routes from "RouteConfig";
 
 function App() {
     return (
@@ -12,10 +12,10 @@ function App() {
                 onLogout={() => {}}
                 user={{ name: "devon" }}
                 onCreateAccount={() => {}}
-                paths={paths}
+                routes={routes}
             />
             <Switch>
-                {paths.map(({ component, path }) => (
+                {routes.map(({ component, path }) => (
                     <Route
                         key={`route-${path}`}
                         path={path}
