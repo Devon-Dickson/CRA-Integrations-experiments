@@ -2,7 +2,7 @@
     "name": "my-app",
     "version": "0.1.1",
     "private": true,
-    "homepage": "https://devon-dickson.github.io/my-app",
+    "homepage": "https://devon-dickson.github.io/dashboard",
     "scripts": {
         "start": "react-scripts start",
         "build": "REACT_APP_GIT_SHA=`git rev-parse HEAD` react-scripts build",
@@ -21,11 +21,13 @@
         "@types/node": "^12.0.0",
         "@types/react": "^16.9.0",
         "@types/react-dom": "^16.9.0",
+        "@types/styled-components": "^5.1.4",
         "react": "^17.0.0",
         "react-dom": "^17.0.0",
-        "react-scripts": "3.4.4",
+        "react-scripts": "4.0.0",
         "styled-components": "^5.2.0",
-        "typescript": "~3.7.2"
+        "typescript": "~3.7.2",
+        "wouter": "^2.5.3"
     },
     "devDependencies": {
         "@babel/core": "^7.12.3",
@@ -38,7 +40,6 @@
         "@typescript-eslint/eslint-plugin": "^4.5.0",
         "@typescript-eslint/parser": "^4.5.0",
         "babel-loader": "^8.1.0",
-        "eslint": "6.6.0",
         "eslint-config-airbnb": "18.2.0",
         "eslint-config-airbnb-typescript": "6.3.2",
         "eslint-config-prettier": "^6.14.0",

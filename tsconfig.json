@@ -14,7 +14,9 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "jsx": "react"
+        "jsx": "react",
+        // Remove when CRA 4.0.1 is released https://github.com/facebook/create-react-app/pull/9921
+        "noFallthroughCasesInSwitch": true
     },
     "include": ["src"]
 }
