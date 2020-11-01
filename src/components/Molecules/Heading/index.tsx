@@ -35,7 +35,7 @@ export const Heading = (
 };
 
 /**
- * Clamps the headingLevel between 1 and 6 per the {@link https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements HTML5 spec}:
+ * Clamps the headingLevel between 1 and 6 per the {@link https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements | HTML5 spec}:
  *
  * @param headingLevel - The heading level
  * @returns The heading level clamped between 1 and 6
