@@ -3,10 +3,12 @@ import "App.css";
 import Header from "components/Molecules/Header";
 import { Route, Switch } from "wouter";
 import routes from "RouteConfig";
+import NavDrawer from "components/compounds/NavDrawer";
+import * as S from "./style";
 
 function App() {
     return (
-        <div className="App">
+        <S.Wrapper>
             <Header
                 onLogin={() => {}}
                 onLogout={() => {}}
@@ -14,16 +16,19 @@ function App() {
                 onCreateAccount={() => {}}
                 routes={routes}
             />
-            <Switch>
-                {routes.map(({ component, path }) => (
-                    <Route
-                        key={`route-${path}`}
-                        path={path}
-                        component={component}
-                    />
-                ))}
-            </Switch>
-        </div>
+            <NavDrawer routes={routes} />
+            <S.Content>
+                <Switch>
+                    {routes.map(({ component, path }) => (
+                        <Route
+                            key={`route-${path}`}
+                            path={path}
+                            component={component}
+                        />
+                    ))}
+                </Switch>
+            </S.Content>
+        </S.Wrapper>
     );
 }
 
