@@ -1,3 +1,9 @@
+
+## Description
+This repo is for experimenting with various integrations including:
+1. Sentry
+2. Travis CI
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
